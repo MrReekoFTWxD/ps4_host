@@ -1,4 +1,3 @@
-
 function kernExploit() {
 	try {
 		var fd = p.syscall("sys_open", p.stringify("/dev/bpf0"), 2).low;

