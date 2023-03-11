@@ -1286,7 +1286,7 @@ function stage2_ () {
 		}
 		*/
 		
-        runPayload("installer.bin");
+        runPayload("PS4-devkit-activator-5.05-activate.bin");
 
 		allset();
 	} else if (fwFromUA == "4.74") {
